@@ -1,0 +1,33 @@
+<div>
+    <article class="spotlight-item">
+        <div class="spotlight-img">
+            <img alt="" src="{{ asset('images/product/' ~ s.featuredImage) }}" class="img-responsive" />
+            <a href="{{ path('front_categorie', {
+                'slug': s.categorie.slug,
+            }) }}" class="cate-tag">{{ s.categorie.nom }}</a>
+        </div>
+        <div class="spotlight-item-caption">
+            <h2 class="font-heading">
+                <a href="{{ path('front_article', {
+                    'slug': s.slug,
+                    'id': s.id,
+                    'categorie': s.categorie.slug
+                }) }}">
+                    {{ s.titre }}
+                </a>
+            </h2>
+            <div class="meta-post">
+                <a href="{{ path('front_membre', {
+                    'id': s.membre.id
+                }) }}">
+                    {{ s.membre.prenom ~ ' ' ~ s.membre.nom }}
+                </a>
+                <em></em>
+                <span>
+                    {{ s.dateCreation | date('d/m/Y') }}
+                </span>
+            </div>
+            <p>{{ s.contenu | summary }}</p>
+        </div>
+    </article>
+</div>

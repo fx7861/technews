@@ -1,0 +1,10 @@
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    globals:
+        categorie_repository: '@App\Repository\CategorieRepository'
+        tag_repository: '@App\Repository\TagRepository'
+    form-themes:
+        - 'bootstrap_3_layout.html.twig'
+

@@ -1,0 +1,86 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+    TEZ NEWS | Magagize & News HTML Template
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <!--colleft-->
+        <div class="col-md-8 col-sm-12">
+            <!--post-detail-->
+            <article class="post-detail">
+                <h1>{{ article.titre }}</h1>
+                <div class="meta-post">
+                    <a href="{{ path('front_membre', {
+                        'id': article.membre.id
+                    }) }}">
+                        {{ article.membre.prenom ~ ' ' ~ article.membre.nom }}
+                    </a>
+                    <em></em>
+                    <span>
+                        {{ article.dateCreation | date('d/m/Y') }}
+                    </span>
+                </div>
+                <div class="post-detail-img">
+                    <img alt="{{ article.titre }}" src="{{ asset('images/product/' ~ article.featuredImage) }}" />
+                </div>
+
+                <p>{{ article.contenu | raw }}</p>
+
+                <h5 class="text-right font-heading"><strong>{{ article.membre.prenom ~ ' ' ~ article.membre.nom }}</strong> </h5>
+
+            </article>
+            <!--social-detail-->
+            <div class="social-detail">
+                <span>Partager l'article</span>
+
+                {% include 'components/_socials.html.twig' %}
+            </div>
+
+            {% if suggestions is not empty %}
+                <div class="detail-caption">
+                    <span>SUGGESTIONS D'ARTICLES</span>
+                </div>
+                <section class="spotlight-thumbs spotlight-thumbs-related">
+                    <div class="row">
+                        {% for article in suggestions %}
+                            <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="spotlight-item-thumb">
+                                    <div class="spotlight-item-thumb-img">
+                                        <a href="{{ path('front_article', {
+                                            'slug': article.slug,
+                                            'id': article.id,
+                                            'categorie': article.categorie.slug
+                                        }) }}">
+                                            <img alt="{{ article.titre }}" src="{{ asset('images/product/' ~ article.featuredImage) }}">
+                                        </a>
+                                        <a href="{{ path('front_categorie', {
+                                            'slug': article.categorie.slug
+                                        }) }}" class="cate-tag">{{ article.categorie.nom }}</a>
+                                    </div>
+                                    <h3><a href="{{ path('front_article', {
+                                            'slug': article.slug,
+                                            'id': article.id,
+                                            'categorie': article.categorie.slug
+                                        }) }}">{{ article.titre }}</a></h3>
+                                    <div class="meta-post">
+                                        <a href="{{ path('front_membre', {
+                                            'id': article.membre.id
+                                        }) }}">
+                                            {{ article.membre.prenom ~ ' ' ~ article.membre.nom }}
+                                        </a>
+                                        <em></em>
+                                        <span>
+                                            {{ article.dateCreation | date('d/m/Y') }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </section>
+            {% endif %}
+        </div>
+{% endblock %}

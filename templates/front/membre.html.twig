@@ -1,0 +1,61 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+    TEZ NEWS | Magagize & News HTML Template
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+    <!--colleft-->
+    <div class="col-md-8 col-sm-12">
+
+        {% if articles is not empty %}
+            <div class="box-caption">
+                <span>{{ membre.prenom ~ ' ' ~ membre.nom }}</span>
+            </div>
+
+            <div class="list-news-cate">
+                {% for article in articles %}
+                    <article class="news-cate-item">
+                        <div class="row">
+                            <div class="col-md-5 col-sm-5 col-xs-12">
+                                <a href="{{ path('front_article', {
+                                    'categorie': article.categorie.slug,
+                                    'slug': article.slug,
+                                    'id': article.id
+                                }) }}">
+                                    <img alt="" src="{{ asset('images/product/' ~ article.featuredImage) }}">
+                                </a>
+                            </div>
+                            <div class="col-md-7 col-sm-7 col-xs-12">
+                                <h3><a href="{{ path('front_article', {
+                                        'categorie': article.categorie.slug,
+                                        'slug': article.slug,
+                                        'id': article.id
+                                    }) }}">{{ article.titre }}</a></h3>
+                                <div class="meta-post">
+                                    <a href="{{ path('front_membre', {
+                                        'id': article.membre.id
+                                    }) }}">
+                                        {{ article.membre.prenom ~ ' ' ~ article.membre.nom }}
+                                    </a>
+                                    <em></em>
+                                    <span>
+                                                {{ article.dateCreation | date('d/m/Y') }}
+                                            </span>
+                                </div>
+                                {{ article.contenu | summary }}
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+
+        {% else %}
+
+            <div class="alert alert-info">Aucun article rédigé par cette auteur.</div>
+
+        {% endif %}
+
+    </div>
+{% endblock %}
