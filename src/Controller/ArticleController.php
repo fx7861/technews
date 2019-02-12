@@ -8,6 +8,7 @@ use App\Entity\Categorie;
 use App\Entity\Membre;
 use App\Form\ArticleFormType;
 use App\Repository\ArticleRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
@@ -67,6 +68,7 @@ class ArticleController extends AbstractController
     /**
      * Formulaire de création d'article
      * @Route("/creer-un-article", name="article_new")
+     * @Security("has_role('ROLE_AUTEUR')")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */

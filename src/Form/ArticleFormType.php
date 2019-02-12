@@ -35,7 +35,7 @@ class ArticleFormType extends AbstractType
     {
         $builder
             ->add('titre', TextType::class, [
-                'required' =>true,
+                'required' => true,
                 'label' => "Titre de l'article",
                 'attr' => [
                     'placeholder' => "Titre de l'article"
@@ -78,11 +78,9 @@ class ArticleFormType extends AbstractType
                 ]
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Creer un article',
-                'attr' => [
-                    'class' => ''
-                ]
-            ]);
+                'label' => 'Creer un article'
+            ])
+        ;
     }
 
     /**

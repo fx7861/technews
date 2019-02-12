@@ -27,7 +27,7 @@ class Tag
     private $slug;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="tags")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Article", inversedBy="tags")
      */
     private $articles;
 
@@ -40,7 +40,8 @@ class Tag
     }
 
     /**
-     * @param mixed $article
+     * @param $articles
+     * @return Tag
      */
     public function setArticles($articles): self
     {

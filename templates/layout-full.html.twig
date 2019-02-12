@@ -2,10 +2,8 @@
 
 {% set categories = categorie_repository.findCategoriesHavingArticle() %}
 
-{#{% set tags = tag_repository.findTagsHavingArticle() %}#}
-
 {% block stylesheets %}
-     <!-- Favicons -->
+    <!-- Favicons -->
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('images/apple-touch-icon-57x57.png') }}">
     <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('images/apple-touch-icon-72x72.png') }}">
@@ -42,10 +40,6 @@
     {% include 'components/_nav.html.twig' %}
 
     {% block content '' %}
-
-    {{ render(controller(
-        'App\\Controller\\FrontController::sidebar'
-    )) }}
 
     {% include 'components/_footer.html.twig' %}
 

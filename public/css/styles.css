@@ -1,0 +1,48 @@
+.login-membre {
+    margin-top: 3em;
+    text-align: center;
+}
+
+.login-membre h5 {
+    line-height: 1;
+    font-size: 12px;
+    color: #767676;
+    font-weight: 400;
+    padding: 0 8px 0 7px;
+}
+
+.user-box {
+    position: absolute;
+    top: 0px;
+    width: 50px;
+    text-align: center;
+    z-index: 9999;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+}
+
+.sign-in {
+    right: 100px;
+}
+
+.login, .deconnexion {
+    right: 50px;
+}
+
+.user-box i {
+    font-size: 20px;
+    cursor: pointer;
+    color: #fff;
+    line-height: 50px;
+}
+
+.fas {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+

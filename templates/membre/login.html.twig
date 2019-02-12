@@ -1,0 +1,35 @@
+{% extends 'layout-full.html.twig' %}
+
+{% block title %}
+    Connexion - Technews
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-12">
+            <h3>Se connecter</h3>
+
+            {% if error %}
+                <div class="alert alert-danger">
+                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                </div>
+            {% endif %}
+
+            {% for message in app.flashes('notice') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+                {{ form_row(form.email) }}
+                {{ form_row(form.password) }}
+            {{ form_end(form) }}
+            <div class="login-membre">
+                <h5>Nouveau chez technews ?</h5>
+                <a href="{{ path('membre_signup') }}" class="btn btn-info">Créer un compte maintenant</a>
+            </div>
+        </div>
+
+{% endblock %}

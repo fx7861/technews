@@ -1,0 +1,7 @@
+<div class="list-tags">
+    {% for tag in tags %}
+        <a href="{{ path('front_tag', {
+            'slug': tag.slug
+        }) }}">{{ tag.nom }}</a>
+    {% endfor %}
+</div>

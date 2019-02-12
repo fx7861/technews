@@ -1,0 +1,18 @@
+{% extends 'layout-full.html.twig' %}
+
+{% block title %}
+    Inscription - Technews
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <h3>S'inscrire</h3>
+            {{ form(form, {attr: {novalidate: 'novalidate'}}) }}
+            <div class="login-membre">
+                <h5>Déjà un compte ?</h5>
+                <a href="{{ path('membre_login') }}" class="btn btn-info">Se connecter maintenant</a>
+            </div>
+        </div>
+
+{% endblock %}

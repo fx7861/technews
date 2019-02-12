@@ -8,6 +8,7 @@ use App\Entity\Categorie;
 use App\Entity\Tag;
 use App\Repository\ArticleRepository;
 use App\Repository\MembreRepository;
+use App\Repository\TagRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -46,7 +47,7 @@ class FrontController extends AbstractController
 
     /**
      * @Route("/tag/{slug<[a-zA-Z0-9\-_\/]+>}",
-     *     defaults={"slug":"politique"},
+     *     defaults={"slug":"apple"},
      *     name="front_tag")
      * @param $slug
      * @return Response
@@ -136,6 +137,18 @@ class FrontController extends AbstractController
         return $this->render('components/_sidebar.html.twig', [
            'articles' => $article,
            'specials' => $specials
+        ]);
+    }
+
+    /**
+     * @param TagRepository $repository
+     * @return Response
+     */
+    public function cloudTags(TagRepository $repository) {
+        $tags = $repository->findTags();
+
+        return $this->render('components/_cloudTags.html.twig', [
+           'tags' => $tags
         ]);
     }
 }

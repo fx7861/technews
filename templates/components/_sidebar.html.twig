@@ -1,5 +1,14 @@
 <!--colright-->
 <div class="col-md-4 col-sm-12">
+
+    {% if is_granted('ROLE_AUTEUR') %}
+        <li class="list-group-item" style="margin: 20px;">
+            <a href="{{ path('article_new') }}">
+                Rédiger un article
+            </a>
+        </li>
+    {% endif %}
+
     <!--tab popular-->
     <ul role="tablist" class="tab-popular">
         <li class="active">
